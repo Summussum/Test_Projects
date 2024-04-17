@@ -2,20 +2,17 @@
 
 
 class TicTacToe():
-    gameOver = False
-    boardLine = "{}   {}   |   {}   |   {}  "
-    boardBarrier = "  — — — | — — — | — — —"
-    spaces = {"a1":" ", "a2":" ", "a3":" ", "b1":" ", "b2":" ", "b3":" ", "c1":" ", "c2":" ", "c3":" "}
-    winStates = [("a1","a2","a3"), ("b1","b2","b3"), ("c1","c2","c3"), ("a1","b1","c1"), ("a2","b2","c2"), ("a3","b3","c3"), ("a1","b2","c3"), ("a3","b2","c1")]
     
-
-
     def __init__(self):
-        winCondition = False
         self.token1 = "X"
         self.token2 = "Y"
+        gameOver = False
+        boardLine = "{}   {}   |   {}   |   {}  "
+        boardBarrier = "  — — — | — — — | — — —"
+        spaces = {"a1":" ", "a2":" ", "a3":" ", "b1":" ", "b2":" ", "b3":" ", "c1":" ", "c2":" ", "c3":" "}
+        winStates = [("a1","a2","a3"), ("b1","b2","b3"), ("c1","c2","c3"), ("a1","b1","c1"), ("a2","b2","c2"), ("a3","b3","c3"), ("a1","b2","c3"), ("a3","b2","c1")]
 
-
+    
     def printBoard(self):
         print("    1       2       3")
         print(self.boardLine.format("a", self.spaces["a1"], self.spaces["a2"],self.spaces["a3"] ))
@@ -24,6 +21,7 @@ class TicTacToe():
         print(self.boardBarrier)
         print(self.boardLine.format("c", self.spaces["c1"], self.spaces["c2"], self.spaces["c3"]))
 
+    
     def checkWin(self):
         for i in self.winStates:
             x = []
@@ -42,9 +40,11 @@ class TicTacToe():
             else:
                 continue
 
+    
     def setup(self):
         choice1 = False
         choice2 = False
+        
         while choice1 == False:
             isCustom1 = input("Welcome Player 1. The default token for Player1 is 'X'. Would you like to choose a new token? (Y/N): ")
             if isCustom1.capitalize() == "Y":
@@ -56,7 +56,6 @@ class TicTacToe():
                 print("The token for Player 1 is: " + self.token1)
                 choice1 = True
                 
-
         while choice2 == False:
             isCustom2 = input("Welcome Player 2. The default token for Player2 is 'Y'. Would you like to choose a new token? (Y/N): ").format(self.token1)
             if isCustom2.capitalize() == "Y":
@@ -66,6 +65,7 @@ class TicTacToe():
             else:
                 choice2 = True
 
+    
     def takeTurn(self, player):
         stamp = player
         finishTurn = False
