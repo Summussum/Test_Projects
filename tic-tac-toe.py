@@ -69,7 +69,6 @@ class TicTacToe():
 
     
     def takeTurn(self, player):
-        stamp = player
         finishTurn = False
         while finishTurn == False:
             self.printBoard()
