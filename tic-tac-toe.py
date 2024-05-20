@@ -6,11 +6,11 @@ class TicTacToe():
     def __init__(self):
         self.token1 = "X"
         self.token2 = "Y"
-        gameOver = False
-        boardLine = "{}   {}   |   {}   |   {}  "
-        boardBarrier = "  — — — | — — — | — — —"
-        spaces = {"a1":" ", "a2":" ", "a3":" ", "b1":" ", "b2":" ", "b3":" ", "c1":" ", "c2":" ", "c3":" "}
-        winStates = [("a1","a2","a3"), ("b1","b2","b3"), ("c1","c2","c3"), ("a1","b1","c1"), ("a2","b2","c2"), ("a3","b3","c3"), ("a1","b2","c3"), ("a3","b2","c1")]
+        self.gameOver = False
+        self.boardLine = "{}   {}   |   {}   |   {}  "
+        self.boardBarrier = "  — — — | — — — | — — —"
+        self.spaces = {"a1":" ", "a2":" ", "a3":" ", "b1":" ", "b2":" ", "b3":" ", "c1":" ", "c2":" ", "c3":" "}
+        self.winStates = [("a1","a2","a3"), ("b1","b2","b3"), ("c1","c2","c3"), ("a1","b1","c1"), ("a2","b2","c2"), ("a3","b3","c3"), ("a1","b2","c3"), ("a3","b2","c1")]
 
     
     def printBoard(self):
@@ -23,6 +23,10 @@ class TicTacToe():
 
     
     def checkWin(self):
+        if " " not in self.spaces.values():
+                    self.printBoard()
+                    print("The game is a tie!")
+                    self.gameOver = True
         for i in self.winStates:
             x = []
             for y in i:
@@ -30,12 +34,10 @@ class TicTacToe():
             if x.count(self.token1) == 3:
                 self.printBoard()
                 print(self.token1 + " wins!")
-                print("Good Game!")
                 self.gameOver = True
             elif x.count(self.token2) == 3:
                 self.printBoard()
-                print(self.token2+ " wins!")
-                print("Good Game!")
+                print(self.token2 + " wins!")
                 self.gameOver = True
             else:
                 continue
